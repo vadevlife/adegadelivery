@@ -36,7 +36,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'5',
-  name:'Refri',
+  name:'Refri 1L',
   description:'',
   price:'R$ 5,00',
   img:'thumb.png',
@@ -99,7 +99,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'14',
-  name:'Refri',
+  name:'Refri Lata',
   description:'',
   price:'R$ 10,00',
   img:'thumb.png',
@@ -109,7 +109,7 @@ const listProd = [
   name:'Vinho',
   description:'',
   price:'R$ 8,00',
-  img:'thumb.png',
+  img:'/produtos/sem-foto.png',
   quantidade: 0,
 },{ 
   id:'16',
