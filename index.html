@@ -356,7 +356,7 @@
                 <img style="
                 width: 20px;
             " src="cart.png" alt="">
-            <span id="qtd" >3</span>
+            <span id="qtd" >0</span>
             </button> 
             <div id="CartMenu" view="false"> 
                 <button  style="background:transparent; float:right;z-index: 999;right: 5px;margin: 20px;" onclick="toggle('CartMenu')">
@@ -645,14 +645,21 @@ Products = (userName,userEnd) => {
   
 
 Cart = (status) =>{ 
-    containerCart=document.getElementById('CartMenu') 
- 
+  containerCart=document.getElementById('CartMenu')  
+  itensCesta=document.getElementById('qtd')  
   containerCart.innerHTML=` <button style="background:transparent; float:right;z-index: 999;right: 5px;margin: 20px;" onclick="toggle('CartMenu')">  x </button>`;
+  var nitens=0
+
+
 
   listProd.map((el)=>{  
     if(el.quantidade > 0){ 
+     nitens2=nitens+=el.quantidade
+      
+      console.log(nitens2)
+      itensCesta.innerHTML=nitens2 ;
         
-          n= el.name  
+        n=el.name  
         containerCart.innerHTML+=`  
             <div class="itemProd">
                 <div class="nameProd">`+el.name+` (`+el.quantidade+` Un.)</div> 
@@ -687,8 +694,7 @@ enviarPedido=()=>{
 
     for (let index = 0; index < cesta.length; index++) {
         const element = cesta[index];
-        name+=element.childNodes[1].innerHTML       
-             
+        name+=element.childNodes[1].innerHTML     
 
         msg="Meu pedido é:"+name+",  "
     // console.log(element.childNodes[1] )
