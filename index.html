@@ -138,6 +138,10 @@
          transition: .3s;
 
       }
+      span {
+        font-weight: 900;
+        color: #46d995;
+    }
       nav,div#CartMenu{
           background: #eee;
           position: absolute;
@@ -177,12 +181,18 @@
 
          
       }
+      .product h4 {
+        color: #424242;
+      }
+      .product span {
+        color: #6c6c6c;
+      }
       .product img {
           width: auto !important;
           height: 130px;
       }
       #products h3:after {
-        border-bottom: 2px solid #ff5c00;
+        border-bottom: 2px solid #4ce29e;
         display: block;
         content: "";
         position: relative;
@@ -271,11 +281,11 @@
     margin: 30px 20px;
     }
     .nameProd {
-    font-weight: 900;
+    font-weight:400;
     }
     span {
     font-weight: 900;
-    color: #FF5C00;
+    color: #46d995;
     }
 
     /* swipr */
@@ -355,10 +365,12 @@
             display: flex;
             align-items: center;
             padding: 0px 14px;
+ 
             " id="welcome">
 
             <img style="
             width: 35px;
+            margin: 0 3px;
         " src="icon.png" alt="">
 
             </div> 
@@ -373,8 +385,8 @@
 
         <div class="logo" style="  position: absolute;   z-index: 99;   width: 100%;   display: flex; flex-direction: column;  top: 30px;padding: 0 40px;">
           <img src="goodvibes_adega.png" alt="" style="width: 60px;display: block;margin: 0 auto;position: relative;right: 33px;">
-          <h1 style="color: white;font-weight: 300;font-size: 36px;line-height: 1.3;">Delivery </br>
-          <strong style="font-weight: 300;color: #4ce29e;text-transform: capitalize;">bebidas</br> online </strong></h1>
+          <h1 style="color: white;font-weight: 300;font-size: 36px;line-height: 1.3;">Adega Delivery </br>
+          <strong style="font-weight: 300;color: #4ce29e;text-transform: capitalize;">Good Vibes</br> online </strong></h1>
           <p style="color: white;width: 160px;opacity: 0.8;font-weight: 300;">Entregamos em toda região central de Ubatuba.</p>
           <img  style="width: 36px;" src="delivery.png" alt="">
         </div>
@@ -464,36 +476,34 @@
         bottom: 40px;
           ">  
           <input id="inputName" type="text" placeholder="Nome">
-          <input id="inputName" type="text" placeholder="Digite seu endereço">
-          <button onclick=getName()>Iniciar</button>
+          <input id="inputEnd" type="text" placeholder="Digite seu endereço">
+          <button onclick=getData()>Iniciar</button>
         </div>  
          
         </div>
       </div>
          
       <div id="slider">
+
         <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
             <div class="swiper-wrapper" id="swiper-wrapper-437910353b76b2ec8" aria-live="polite">
-              <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 377px;">
-                <img src="blacklabel.png" alt=""> 
+                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 377px;">
+                  <img src="blacklabel.png" alt=""> 
+                </div>
+                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 377px;">
+                  <img src="gin.png" alt="">  
+                </div> 
             </div>
-              <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 377px;">
-                <img src="gin.png" alt=""> 
+            <div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal" hidden><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">9</span></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>  
+        </div>
 
-            </div>
-            
-              
-            </div>
-             <div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal" hidden><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">9</span></div>
-          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>  
-
-      </div>
       <div class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
         <h4 class="title"style="
         display: block;
         margin-bottom: 5px;
-        width: 191px;
-        font-size: 18px;
+        width: 211px;
+        font-size: 22px;
         line-height: 1.3;
     ">
           <strong style="
@@ -537,39 +547,43 @@
     var launcherID = document.getElementById('launcher')
     
     var input ="<input id=inputName type='text' placeholder='Digite seu nome aqui' required >"
-    var button ="<button onclick=getName()  type='button' placeholder='Digite seu nome aqui' required >Iniciar</button>" 
+    var button ="<button onclick=getData()  type='button' placeholder='Digite seu nome aqui' required >Iniciar</button>" 
     // launcherID.innerHTML=input+button
 
-    getName = () => {
+    getData = () => {
+
         var userName=document.getElementById('inputName').value
+        var userEnd=document.getElementById('inputEnd').value
+
         body.style.cssText+="overflow-y: auto;"
-        if(userName.length>=2){
-            Products(userName) 
+
+        if(userName.length>=2 & userEnd.length>=2){
+            Products(userName,userEnd) 
             
             setTimeout( 
                 launcherID.style.cssText="display:none;"
             , 1000);
         }else{
-            alert('Para começar preencha o campo')
+            alert('Para começar preencha os campos')
         }
     }
   
 }
  initApp()
 
-Products = (userName) => { 
+Products = (userName,userEnd) => { 
    
 
   var container=document.getElementById('products')
   var welcome=document.getElementById('welcome')
-  welcome.innerHTML+="<p style='  margin-top: 15px;  font-size: 14px;  color: black;  padding: 0 5px;   display: block;   margin-left: auto;  margin-right: auto; line-height: 1.2;width: 150px;'> Olá, <strong style='font-weight: 700;color: #4BE8A0; letter-spacing: 1px;'>"+userName+"</strong> faça seu pedido.</p>"
+  welcome.innerHTML+="<div><p style='  margin: 0px auto 5px;  font-size: 13px;  color: black;  padding: 0 5px; white-space: nowrap;  display: block;   margin-left: auto;  margin-right: auto; line-height: 1.2;'> Olá, <strong style='font-weight: 700;color: #4BE8A0; letter-spacing: 1px;'>"+userName+"</strong> faça seu pedido.</p><p style='font-size: 12px;margin: 0 5px; line-height: 1.2; white-space: nowrap;'> <i class='fa-solid fa-location-dot' style=' margin: 0 4px 0 0;'></i>"+userEnd+"</p><div>"
 
-
+  console.log(userName,userEnd)
   allProds.map((el)=>{ 
       var ii=el.itens 
 
       
-      container.innerHTML+=`<h3>`+el.categoria+`</h3>`;
+      container.innerHTML+=`<h3 style="margin: 35px auto;">`+el.categoria+`</h3>`;
     
       for (var b = 0; b < ii.length; b++) { 
         var itemProdId=ii[b].id
@@ -580,14 +594,18 @@ Products = (userName) => {
  
         container.innerHTML+=`  
             <div class="product" id=`+itemProdId+` onclick="toggle('`+itemProdId+`')" view="false">   
-                    <div style="padding: 10px 10px; order: 2;">
+                    <div style="padding: 10px 10px;order: 2;width: 20%;">
                             <h4 style="font-weight: 400;text-transform: uppercase;margin: 0;">`+itemProdName+`</h4>
                             <p>`+itemProdDescription+`</p>
                             <span  style="font-weight: 400;">`+itemProdPrice+`</span> 
+
                         </div>  
+                        <button  style="order: 2;width: 20px;height: 20px;display: flex;justify-content: center;align-items: center;background: black;margin: 0 0px 0 43px;" class="">+</button> 
+
                         <div style="margin: 0 25px; position: relative;order: 1;width: 25%;display: flex;justify-content: center;">   
                             <img style="width: 120px;margin-left: 5px;" src="`+itemProdImg+`" alt="">
                         </div>
+
                         <div style="position: absolute;right: -106px;width: 96px;height: 100%;">  
                             <button key=`+itemProdId+` class="cartBtn">Comprar</button> 
                         </div>  
@@ -626,7 +644,7 @@ Cart = (status) =>{
           n= el.name  
         containerCart.innerHTML+=`  
             <div class="itemProd">
-                <div class="nameProd">`+el.name+` (`+el.quantidade+` Un.),(`+el.price+` Un.)</div> 
+                <div class="nameProd">`+el.name+` (`+el.quantidade+` Un.)</div> 
                 <p>`+el.description+`</p>
                 <span>`+el.price+`</span>
                 <button  key=`+el.id+` style="float:right; " onclick="removeProd(this)">  Remover </button>
@@ -645,7 +663,7 @@ Cart = (status) =>{
     } 
     // console.log( n )
 
-    containerCart.innerHTML+=`<button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #FF5C00;bottom: 25px;width: 230px;height: 45px;background: #FF5C00;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>
+    containerCart.innerHTML+=`<button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>
             
         `
 }
