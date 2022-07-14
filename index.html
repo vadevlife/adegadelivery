@@ -360,7 +360,7 @@
             <span id="qtd" >0</span>
             </button> 
             <div id="CartMenu" view="false"> 
-                <button  style="background:transparent; float:right;z-index: 999;right: 5px;margin: 20px;" onclick="toggle('CartMenu')">
+                <button  style="background:transparent; float:right;z-index: 999;border: 1px solid #5a5a5a;right: 5px;margin: 15px;border-radius: 20px;height: 25px;width: 25px;color: #5a5a5a;" onclick="toggle('CartMenu')">
                     x
                 </button>  
                 <div class="msg">
@@ -552,10 +552,11 @@
 <script src="products.js"></script>
 <script src="teste.js"></script>
 <script> 
- 
+   
  var body=document.getElementsByTagName("body")[0]
  
- initApp = () => {
+ initApp = () => { 
+
     var launcherID = document.getElementById('launcher')
     
     var input ="<input id=inputName type='text' placeholder='Digite seu nome aqui' required >"
@@ -564,8 +565,8 @@
 
     getData = () => {
 
-        var userName=document.getElementById('inputName').value
-        var userEnd=document.getElementById('inputEnd').value
+          userName=document.getElementById('inputName').value
+        userEnd=document.getElementById('inputEnd').value
 
         body.style.cssText+="overflow-y: auto;"
 
@@ -653,20 +654,23 @@ Cart = (status) =>{
   var total=0
 
 
+ 
 
   listProd.map((el)=>{  
     if(el.quantidade > 0){ 
      nitens2=nitens+=el.quantidade
      total2=total+=el.price*el.quantidade
+     quantProd=el.price*el.quantidade
        
       itensCesta.innerHTML=nitens2 ;
-        console.log(total2)
+      
+        console.log(quantProd.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
         n=el.name  
         containerCart.innerHTML+=`  
             <div class="itemProd">
                 <div class="nameProd">`+el.quantidade+` `+el.name+` </div> 
                 <p>`+el.description+`</p>
-                <span>R$`+el.price*el.quantidade+`</span>
+                <span>`+quantProd.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span>
                 <button  key=`+el.id+` style="float:right;position: absolute;right: 20px;" onclick="removeProd(this)">  Remover </button>
             </div>  
             
@@ -683,10 +687,10 @@ Cart = (status) =>{
         alert('Produto removido  ')
 
     } 
-    // console.log( n )
+    totalReal=total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
 
-    containerCart.innerHTML+=`<div style=" display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: R$`+total2+`</div><button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>   `
-    console.log( total2.length)
+    containerCart.innerHTML+=`<div style=" display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: `+total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</div><button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>   `
+    
 }
 
 enviarPedido=()=>{ 
@@ -700,12 +704,10 @@ enviarPedido=()=>{
         name+=element.childNodes[1].innerHTML     
 
         msg="Meu pedido é:"+name+",  "
-    // console.log(element.childNodes[1] )
-    // console.log(element.childNodes[5] )
-        
+   
     }
     console.log(  msg  )
-    url="https://wa.me/+5512996048083?text="+msg+""
+    url="https://wa.me/+5512996048083?text=Olá meu nome é "+userName+", endereço ("+userEnd+"), Pedido:"+msg+"Total a pagar:"+totalReal;
     location.href = url
 
 }
