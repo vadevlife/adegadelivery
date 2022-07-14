@@ -15,9 +15,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
       body{
-       padding: 10px 10px ;overflow-y: auto; overflow: hidden; 
        font-family: 'Poppins', sans-serif !important;
+       margin: 0 auto !important;
+       padding: 10px 10px ; 
+       max-width: 500px;
+       font-family: 'Poppins', sans-serif; 
       }
+       
       ul li{
           list-style: none;
       }
@@ -107,13 +111,7 @@
               margin: 10px auto;
           }
 
-      body {
-          max-width: 500px;
-          margin: 0 auto;
-          /* box-shadow: 7px 0px 23px #ddd; */
-          position: relative;
-          font-family: 'Poppins', sans-serif;
-      }
+    
 
       .show {
         display: block !important;
@@ -288,8 +286,9 @@
       }
 
       }
-      .itemProd {
-    margin: 30px 20px;
+      .itemProd {margin: 0;
+    border-bottom: 1px solid #d7d7d7;
+    padding: 22px;
     }
     .nameProd {
     font-weight:400;
@@ -322,7 +321,7 @@
     --swiper-theme-color: #4ce29e;
 }
   </style>
-<body style="padding: 10px 10px ;overflow-y: auto; overflow: hidden;"> 
+<body style="padding: 10px 10px; "> 
     <header style="display: flex;align-items: center;justify-content: space-between;margin: 5px auto 0;">
         <div>
             <button style="background:transparent;border:0;" onclick="toggle('CartMenu')">
@@ -333,10 +332,12 @@
             <nav id="nav" view="false">
                 <button style="float:right;margin:10px;cursor:pointer;background:transparent;border:0;" onclick="toggle('CartMenu')">x</button>
                 <ul>
-                    <li>Hot Dogs</li>
-                    <li>Hambúrguers</li>
-                    <li>Lanches Espiais</li>
-                    <li>Bebidas</li>
+                    <li>Cervejas</li>
+                    <li>Whisky</li>
+                    <li>Fardos</li>
+                    <li>Vinhos</li>
+                    <li>Gin</li>
+                    <li>Destilados</li>
                 </ul>
             </nav>
             <span style="
@@ -394,7 +395,7 @@
     <main > 
       <div id="launcher">
 
-        <div class="logo" style="  position: absolute;   z-index: 99;   width: 100%;   display: flex; flex-direction: column;  top: 30px;padding: 0 40px;">
+        <div class="logo" style="  position: absolute;   z-index: 99;      display: flex; flex-direction: column;  top: 30px;padding: 0 40px;">
           <img src="goodvibes_adega.png" alt="" style="width: 60px;display: block;margin: 0 auto;position: relative;right: 33px;">
           <h1 style="color: white;font-weight: 300;font-size: 36px;line-height: 1.3;">Adega Delivery </br>
           <strong style="font-weight: 300;color: #4ce29e;text-transform: capitalize;">Good Vibes</br> online </strong></h1>
@@ -456,7 +457,7 @@
        
         
        
-         <div class="swiper containerMySwiper">
+         <div class="swiper containerMySwiper"  >
             <div class="swiper-wrapper">
               
              
@@ -519,7 +520,7 @@
     ">
           <strong style="
           color: #46d995;
-      ">A Maneira mais</strong> rápida de comprar bebidas online
+      ">A Maneira mais</strong> rápida de comprar bebidas online.
         </h4>    
         <p style="margin: 5px auto 40px;">Faça seu pedido! </p>
         <div id="products"></div> 
@@ -553,7 +554,7 @@
 <script> 
  
  var body=document.getElementsByTagName("body")[0]
- console.log(body)
+ 
  initApp = () => {
     var launcherID = document.getElementById('launcher')
     
@@ -608,7 +609,7 @@ Products = (userName,userEnd) => {
                     <div style="padding: 10px 10px;order: 2;width: 20%;">
                             <h4 style="font-weight: 400;text-transform: uppercase;margin: 0;">`+itemProdName+`</h4>
                             <p>`+itemProdDescription+`</p>
-                            <span  style="font-weight: 400;">`+itemProdPrice+`</span> 
+                            <span  style="font-weight: 400;">R$ `+itemProdPrice+`</span> 
 
                         </div>  
                         <button  style="order: 2;width: 20px;height: 20px;display: flex;justify-content: center;align-items: center;background: black;margin: 0 0px 0 43px;" class="">+</button> 
@@ -649,27 +650,30 @@ Cart = (status) =>{
   itensCesta=document.getElementById('qtd')  
   containerCart.innerHTML=` <button style="background:transparent; float:right;z-index: 999;right: 5px;margin: 20px;" onclick="toggle('CartMenu')">  x </button>`;
   var nitens=0
+  var total=0
 
 
 
   listProd.map((el)=>{  
     if(el.quantidade > 0){ 
      nitens2=nitens+=el.quantidade
-      
-      console.log(nitens2)
+     total2=total+=el.price*el.quantidade
+       
       itensCesta.innerHTML=nitens2 ;
-        
+        console.log(total2)
         n=el.name  
         containerCart.innerHTML+=`  
             <div class="itemProd">
-                <div class="nameProd">`+el.name+` (`+el.quantidade+` Un.)</div> 
+                <div class="nameProd">`+el.quantidade+` `+el.name+` </div> 
                 <p>`+el.description+`</p>
-                <span>`+el.price+`</span>
-                <button  key=`+el.id+` style="float:right; " onclick="removeProd(this)">  Remover </button>
+                <span>R$`+el.price*el.quantidade+`</span>
+                <button  key=`+el.id+` style="float:right;position: absolute;right: 20px;" onclick="removeProd(this)">  Remover </button>
             </div>  
+            
         `;
         // toggle('CartMenu')
-        
+       
+        // console.log(parseInt(el.price)*el.quantidade)
     }  
    
   })
@@ -681,9 +685,8 @@ Cart = (status) =>{
     } 
     // console.log( n )
 
-    containerCart.innerHTML+=`<button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>
-            
-        `
+    containerCart.innerHTML+=`<div style=" display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: R$`+total2+`</div><button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>   `
+    console.log( total2.length)
 }
 
 enviarPedido=()=>{ 
