@@ -90,7 +90,7 @@
         quantidade: 0,
       },{ 
         id:'62',
-        name:'Brahma duplemalte',
+        name:'Brahma Duplo Malte',
         description:'',
         price:5.00,
         img:'produtos/brahma_puro_malte.png',

@@ -703,11 +703,11 @@ enviarPedido=()=>{
         const element = cesta[index];
         name+=element.childNodes[1].innerHTML     
 
-        msg="Meu pedido é:"+name+",  "
+        msg=""+name+",  "
    
     }
     console.log(  msg  )
-    url="https://wa.me/+5512996048083?text=Olá meu nome é "+userName+", endereço ("+userEnd+"), Pedido:"+msg+"Total a pagar:"+totalReal;
+    url="https://wa.me/+5512996048083?text=Olá meu nome é "+userName+", endereço ("+userEnd+"), Pedido: "+msg+"Total a pagar:"+totalReal;
     location.href = url
 
 }
