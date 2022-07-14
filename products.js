@@ -57,7 +57,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'8',
-  name:'Estela',
+  name:'Stella',
   description:'',
   price:8.50,
   img:'thumb.png',
