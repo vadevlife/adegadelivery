@@ -187,7 +187,7 @@
         quantidade: 0,
       },{ 
         id:'59',
-        name:'Jack Whisky',
+        name:'Jack Daniels Whisky',
         description:'',
         price:'R$ 120,00',
         img:'produtos/jack.png',

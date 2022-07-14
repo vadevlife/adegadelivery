@@ -155,7 +155,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'22',
-  name:'Sminorf Ice',
+  name:'Smirnoff Ice',
   description:'',
   price:'R$ 13,00',
   img:'thumb.png',
@@ -211,7 +211,7 @@ const listProd = [
       quantidade: 0,
     },{ 
       id:'30',
-      name:'Sminorf Lata',
+      name:'Smirnoff Lata',
       description:'',
       price:'R$ 9,50',
       img:'bacon.png',
@@ -323,7 +323,7 @@ const listProd = [
       quantidade: 0,
     },{ 
       id:'46',
-      name:'Jack Whisky',
+      name:'Jack Daniels Whisky',
       description:'',
       price:'R$ 120,00',
       img:'calabresa.png',
@@ -414,7 +414,7 @@ const listProd = [
       quantidade: 0,
     },{ 
       id:'59',
-      name:'Sminorf Sabor',
+      name:'Smirnoff Sabor',
       description:'',
       price:'R$ 58,00',
       img:'calabresa.png',
