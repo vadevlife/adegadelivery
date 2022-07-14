@@ -166,7 +166,7 @@
         quantidade: 0,
       },{ 
         id:'56',
-        name:'Passaport',
+        name:'Passport',
         description:'',
         price:'R$ 55,00',
         img:'produtos/passport.png',
