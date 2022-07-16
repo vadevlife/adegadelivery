@@ -3,7 +3,7 @@ const listProd = [
   id:'0',
   name:'Brahma',
   description:'',
-  price:  4.00,
+  price: 4.00,
   img:'thumb.png',
   quantidade: 0,
 },{ 
