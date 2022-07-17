@@ -618,7 +618,7 @@ Products = (userName,userEnd) => {
                     <div style="padding: 10px 10px;order: 2;width: 20%;">
                             <h4 style="font-weight: 400;text-transform: uppercase;margin: 0;">`+itemProdName+`</h4>
                             <p>`+itemProdDescription+`</p>
-                            <span  style="font-weight: 400;">R$ `+itemProdPrice+`</span> 
+                            <span  style="font-weight: 400;">`+itemProdPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span> 
 
                         </div>  
                         <button  style="order: 2;width: 20px;height: 20px;display: flex;justify-content: center;align-items: center;background: black;margin: 0 0px 0 43px;" class="">+</button> 
