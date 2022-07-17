@@ -17,9 +17,10 @@
       body{
        font-family: 'Poppins', sans-serif !important;
        margin: 0 auto !important;
-       padding: 10px 10px ; 
+       padding: 10px 10px  !important; 
        max-width: 500px;
        font-family: 'Poppins', sans-serif; 
+       overflow: hidden;
       }
        
       ul li{
@@ -320,8 +321,14 @@
 :root {
     --swiper-theme-color: #4ce29e;
 }
+body[status="naologado"] #slider {
+    display: none;
+}
+body[status="logado"] #slider {
+    display: inherit;
+}
   </style>
-<body style="padding: 10px 10px; "> 
+<body status="naologado" > 
     <header style="display: flex;align-items: center;justify-content: space-between;margin: 5px auto 0;">
         <div>
             <button style="background:transparent;border:0;" onclick="toggle('CartMenu')">
@@ -360,7 +367,7 @@
             <span id="qtd" >0</span>
             </button> 
             <div id="CartMenu" view="false"> 
-                <button  style="background:transparent; float:right;z-index: 999;border: 1px solid #5a5a5a;right: 5px;margin: 15px;border-radius: 20px;height: 25px;width: 25px;color: #5a5a5a;" onclick="toggle('CartMenu')">
+                <button  style="background:transparent;z-index: 999;border: 1px solid #5a5a5a;left:5px;margin: 15px;border-radius: 20px;height: 25px;width: 25px;color: #5a5a5a;" onclick="toggle('CartMenu')">
                     x
                 </button>  
                 <div class="msg">
@@ -590,8 +597,9 @@ Products = (userName,userEnd) => {
   var container=document.getElementById('products')
   var welcome=document.getElementById('welcome')
   welcome.innerHTML+="<div><p style='  margin: 0px auto 5px;  font-size: 13px;  color: black;  padding: 0 5px; white-space: nowrap;  display: block;   margin-left: auto;  margin-right: auto; line-height: 1.2;'> Olá, <strong style='font-weight: 700;color: #4BE8A0; letter-spacing: 1px;'>"+userName+"</strong> faça seu pedido.</p><p style='font-size: 12px;margin: 0 5px; line-height: 1.2; white-space: nowrap;'> <i class='fa-solid fa-location-dot' style=' margin: 0 4px 0 0;'></i>"+userEnd+"</p><div>"
+ 
+    body.setAttribute("status", "logado")
 
-  console.log(userName,userEnd)
   allProds.map((el)=>{ 
       var ii=el.itens 
 
@@ -647,14 +655,15 @@ Products = (userName,userEnd) => {
   
 
 Cart = (status) =>{ 
+
+  
   containerCart=document.getElementById('CartMenu')  
   itensCesta=document.getElementById('qtd')  
   containerCart.innerHTML=` <button style="background:transparent; z-index: 999;left: 5px;margin: 20px;border:0" onclick="toggle('CartMenu')"> <i class="fa-solid fa-chevron-left"></i></button>`;
   var nitens=0
   var total=0
 
-
- 
+  
 
   listProd.map((el)=>{  
     if(el.quantidade > 0){ 
@@ -682,11 +691,9 @@ Cart = (status) =>{
   if(status==true){ 
         alert('Produto adicionado ')
   }else{
-      alert('Produto removido  ')
-
+      alert('Produto removido  ') 
   } 
-    totalReal=total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-
+    totalReal=total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) 
     containerCart.innerHTML+=`<div style=" display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: `+total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</div><button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>   `
     
 }
