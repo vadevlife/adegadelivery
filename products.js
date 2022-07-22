@@ -29,7 +29,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'4',
-  name:'Império',
+  name:'Império Cerveja Lata ',
   description:'',
   price:4.50,
   img:'thumb.png',

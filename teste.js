@@ -33,8 +33,8 @@
         img:'produtos/heineken.png',
         quantidade: 0,
       },{ 
-        id:'4',
-        name:'império',
+        id:'4', 
+        name:'Império Cerveja Lata ', 
         description:'',
         price:4.50,
         img:'produtos/imperio.png',
