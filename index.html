@@ -10,7 +10,15 @@
     <link rel="stylesheet" href="all.css">
 
 </head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F72XNQT98R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-F72XNQT98R');
+</script>
   <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
@@ -18,7 +26,7 @@
        font-family: 'Poppins', sans-serif !important;
        margin: 0 auto !important;
        padding: 10px 10px  !important; 
-       max-width: 500px;
+       max-width: 460px;
        font-family: 'Poppins', sans-serif; 
        overflow: hidden;
       }
@@ -151,6 +159,10 @@
           top: 0px;
           overflow-y: auto;
           height: -webkit-fill-available;
+      }
+      div#CartMenu{
+        height: 82vh !important;
+
       }
       nav ul li {
       font-size: 25px;
@@ -615,7 +627,7 @@ Products = (userName,userEnd) => {
  
         container.innerHTML+=`  
             <div class="product" id=`+itemProdId+` onclick="toggle('`+itemProdId+`')" view="false">   
-                    <div style="padding: 10px 10px;order: 2;width: 20%;">
+                    <div style="padding: 10px 10px;order: 2;width: 27%;">
                             <h4 style="font-weight: 400;text-transform: uppercase;margin: 0;">`+itemProdName+`</h4>
                             <p>`+itemProdDescription+`</p>
                             <span  style="font-weight: 400;">`+itemProdPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span> 
@@ -623,7 +635,7 @@ Products = (userName,userEnd) => {
                         </div>  
                         <button  style="order: 2;width: 20px;height: 20px;display: flex;justify-content: center;align-items: center;background: black;margin: 0 0px 0 43px;" class="">+</button> 
 
-                        <div style="margin: 0 25px; position: relative;order: 1;width: 25%;display: flex;justify-content: center;">   
+                        <div style="margin: 0 25px; position: relative;order: 1;width: 23%;display: flex;justify-content: center;">   
                             <img style="width: 120px;margin-left: 5px;" src="`+itemProdImg+`" alt="">
                         </div>
 
@@ -659,7 +671,7 @@ Cart = (status) =>{
   
   containerCart=document.getElementById('CartMenu')  
   itensCesta=document.getElementById('qtd')  
-  containerCart.innerHTML=` <button style="background:transparent; z-index: 999;left: 5px;margin: 20px;border:0" onclick="toggle('CartMenu')"> <i class="fa-solid fa-chevron-left"></i></button>`;
+  containerCart.innerHTML=` <button style="   background:transparent; z-index: 999;left: 5px;margin: 20px;border:0" onclick="toggle('CartMenu')"> <i class="fa-solid fa-chevron-left"></i></button>`;
   var nitens=0
   var total=0
 
@@ -684,7 +696,9 @@ Cart = (status) =>{
             </div>  
             
         `;  
-    }  
+    } else{
+       console.log(el.quantidade )
+  }  
    
   })
 
@@ -694,7 +708,7 @@ Cart = (status) =>{
       alert('Produto removido  ') 
   } 
     totalReal=total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) 
-    containerCart.innerHTML+=`<div style=" display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: `+total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</div><button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>   `
+    containerCart.innerHTML+=`<div style="   box-shadow: 0px -7px 12px #d9d9d9;position: fixed; bottom: 0; background: #ffffff; width: 100%; "><div style=" display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: `+total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</div ><button onclick="enviarPedido()" style="float: inherit;margin: 20px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button> </div>  `
     
 }
 
