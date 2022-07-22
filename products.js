@@ -43,7 +43,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'6',
-  name:'Long h',
+  name:'Haineken Long Neck',
   description:'',
   price:8.50,
   img:'thumb.png',

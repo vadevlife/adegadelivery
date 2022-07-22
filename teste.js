@@ -34,14 +34,14 @@
         quantidade: 0,
       },{ 
         id:'4',
-        name:'Imperio',
+        name:'império',
         description:'',
         price:4.50,
         img:'produtos/imperio.png',
         quantidade: 0,
       },{ 
-        id:'6',
-        name:'Long h',
+        id:'6', 
+        name:'Haineken Long Neck', 
         description:'',
         price:8.50,
         img:'produtos/long_hei.png',
