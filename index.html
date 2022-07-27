@@ -30,7 +30,7 @@
        font-family: 'Poppins', sans-serif; 
        overflow: hidden;
       }
-       
+      button,a { font-size: 14px;} 
       ul li{
           list-style: none;
       }
@@ -46,7 +46,7 @@
             left: 0;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap;  
             flex-wrap: wrap;
             background-repeat: no-repeat;
             background-size: cover;
@@ -388,8 +388,17 @@ body[status="logado"] #slider {
             </div> 
         </div>
        
+      <div id="search" style="
+      background: #ffffff;
+      width: 100%;
+      height: auto;
+      top: 70px;
+      position: relative;
+      z-index: 99;
+  "></div> 
+       
       
-         <div class="search" style="position: absolute;top: 30px;width: 80%;left: 0;margin: 15px 7%;">
+         <div class="search" style="position: absolute;top: 10px;width: 80%;left: 0;margin: 15px 7%;"  >
             <div style="
             margin: 3px auto;
             position: absolute;
@@ -405,9 +414,11 @@ body[status="logado"] #slider {
         " src="icon.png" alt="">
 
             </div> 
-                <input style="width: 100%;margin: 70px 0px;border: 0px solid #bfbdbd;padding: 13px 15px;border-radius: 25px;background: #F5F5F5;" type="text" placeholder="Buscar itens..">
+                <input id="serchInput" style="width: 100%;margin: 70px 0px;border: 0px solid #bfbdbd;padding: 13px 15px;border-radius: 25px;background: #F5F5F5;" type="text" placeholder="Buscar itens..">
                 <i style="position: absolute;right: -10px;top: 82px; opacity: 0.3; cursor: pointer;" class="fa-solid fa-magnifying-glass"></i>
-         </div>
+                <ul style=" background: white;width: 100%;left: 0;position: fixed;z-index: 99;top: 120px;height: auto;padding: 0px;" id="searchResult">
+                 </ul> 
+              </div>
          
     </header>
     
@@ -567,9 +578,77 @@ body[status="logado"] #slider {
    
     });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
 <script src="all.js"></script>
 <script src="products.js"></script>
 <script src="teste.js"></script>
+
+<script>
+
+  search = ()=> {
+    
+    let  id = document.getElementById('search')  
+    let  serchInput = document.getElementById('serchInput')   
+    let  searchResult = document.getElementById('searchResult')   
+     
+    searchResult.innerHTML=""
+    
+
+    submitSearch=(event)=>{
+      let searched=event.target.value  
+      const productFound=ProductsFilter(searched)  
+     
+      productFound.length > 0 ? render(productFound) :  searchResult.innerHTML="Produto não encontrado"
+      searched.length=='' ? searchResult.innerHTML="" : ProductsFilter(searched)  
+    }
+
+    ProductsFilter=(searched)=>{
+        return listProd.filter(p=>{
+           return p.name.toLowerCase().includes(searched.toLowerCase())  
+        })  
+      }
+    serchInput.addEventListener('keyup', _.debounce(submitSearch, 500))
+ 
+
+    totalProducts=(listProd)=>{ 
+      console.log(listProd.length)
+    }
+    totalProducts(listProd)
+
+    function render(productFound){   
+      serchInput.style.cssText+="display:block;"
+      productFound.map((pr)=>{  
+            searchResult.innerHTML+=`
+                   <div class="product" id=`+pr.id+` onclick="toggle('`+pr.id+`')" view="false">   
+                    <div style="padding: 10px 10px;order: 2;width: 27%;">
+                            <h4 style="font-weight: 400;text-transform: uppercase;margin: 0;">`+pr.name+`</h4>
+                         
+                            <span  style="font-weight: 400;">`+pr.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span> 
+
+                        </div>  
+                        <button  style="order: 2;width: 20px;height: 20px;display: flex;justify-content: center;align-items: center;background: black;margin: 0 0px 0 43px;" class="">+</button> 
+
+                        <div style="margin: 0 25px; position: relative;order: 1;width: 23%;display: flex;justify-content: center;">   
+                            <img style="width: 120px;margin-left: 5px;" src="produtos/`+pr.img+`" alt="">
+                        </div>
+
+                        <div style="position: absolute;right: -106px;width: 96px;height: 100%;">  
+                            <button key=`+pr.id+` onclick="addProd(this)" class="cartBtn">Comprar</button> 
+                        </div>  
+                </div> 
+            </div>   
+            `;    
+        }) 
+   }
+   
+
+
+
+   
+
+  }
+  search()
+</script>
 <script> 
    
  var body=document.getElementsByTagName("body")[0]
@@ -631,7 +710,6 @@ Products = (userName,userEnd) => {
                             <h4 style="font-weight: 400;text-transform: uppercase;margin: 0;">`+itemProdName+`</h4>
                             <p>`+itemProdDescription+`</p>
                             <span  style="font-weight: 400;">`+itemProdPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span> 
-
                         </div>  
                         <button  style="order: 2;width: 20px;height: 20px;display: flex;justify-content: center;align-items: center;background: black;margin: 0 0px 0 43px;" class="">+</button> 
 
@@ -640,7 +718,7 @@ Products = (userName,userEnd) => {
                         </div>
 
                         <div style="position: absolute;right: -106px;width: 96px;height: 100%;">  
-                            <button key=`+itemProdId+` class="cartBtn">Comprar</button> 
+                            <button key=`+itemProdId+` onclick="addProd(this)" class="cartBtn">Comprar</button> 
                         </div>  
                 </div> 
             </div>   
@@ -648,17 +726,29 @@ Products = (userName,userEnd) => {
         }
     }) 
 
-    var btn=document.querySelectorAll('.cartBtn')
+ 
+    addProd=(prodThis)=>{
 
- for (var i = 0; i < btn.length; i++) { 
-    btn[i].addEventListener('click',function(){
-      let key=this.getAttribute('key')
+      let key=prodThis.getAttribute('key')
       listProd[key].quantidade++ 
       Cart(true) 
-    }) 
-    
-  }
-} 
+
+      
+    }
+
+    }
+  //  var btn=document.querySelectorAll('.cartBtn')
+
+  //     for (var i = 0; i < btn.length; i++) { 
+  //         btn[i].addEventListener('click',function(){
+  //           let key=this.getAttribute('key')
+  //           listProd[key].quantidade++ 
+  //           Cart(true) 
+  //         }) 
+          
+  //       }
+      
+  
 
  
 
@@ -667,15 +757,11 @@ Products = (userName,userEnd) => {
   
 
 Cart = (status) =>{ 
-
-  
   containerCart=document.getElementById('CartMenu')  
   itensCesta=document.getElementById('qtd')  
   containerCart.innerHTML=` <button style="   background:transparent; z-index: 999;left: 5px;margin: 20px;border:0" onclick="toggle('CartMenu')"> <i class="fa-solid fa-chevron-left"></i></button>`;
   var nitens=0
   var total=0
-
-  
 
   listProd.map((el)=>{  
     if(el.quantidade > 0){ 
@@ -698,7 +784,7 @@ Cart = (status) =>{
         `;  
     } else{
        console.log(el.quantidade )
-  }  
+      }  
    
   })
 
@@ -712,18 +798,14 @@ Cart = (status) =>{
     
 }
 
-enviarPedido=()=>{ 
-
+enviarPedido=()=>{  
     var cesta=document.querySelectorAll("div#CartMenu .itemProd")
-   
-    // console.log(cesta )
-
+    
     for (let index = 0; index < cesta.length; index++) {
         const element = cesta[index];
-        name+=element.childNodes[1].innerHTML     
+        name+=element.childNodes[1].innerHTML      
 
-        msg="("+name+")  "
-   
+        msg="("+name+")  " 
     }
     console.log(  msg  )
     url="https://wa.me/+5512996048083?text=Olá meu nome é "+userName+", endereço ("+userEnd+"), Pedido: "+msg+"Total à pagar:"+totalReal;
