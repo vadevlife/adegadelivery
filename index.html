@@ -22,9 +22,7 @@
   <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
-      body[status="logado"] {
-          overflow: auto !important;
-      }
+      
       body{
        font-family: 'Poppins', sans-serif !important;
        margin: 0 auto !important;
@@ -162,6 +160,7 @@
           top: 0px;
           overflow-y: auto;
           height: -webkit-fill-available;
+          z-index: 990;
       }
       div#CartMenu{
         height: 82vh !important;
@@ -354,7 +353,8 @@ label {
   position: relative;  
 }
 ul#searchResult[view="show"] {
-    height: 350px;
+    height: auto  ;
+    max-height: 350px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -608,7 +608,8 @@ ul#searchResult[view="show"] {
       if( searched.length=='' ){
         searchResult.innerHTML=""
         searchResult.setAttribute("view","hide")
-    body.setAttribute("status", "logado")
+        body.style.cssText="overflow: auto";
+
 
         
       }else{
