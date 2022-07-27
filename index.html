@@ -22,6 +22,9 @@
   <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
+      body[status="logado"] {
+          overflow: auto !important;
+      }
       body{
        font-family: 'Poppins', sans-serif !important;
        margin: 0 auto !important;
@@ -350,6 +353,11 @@ header button {
 label {
   position: relative;  
 }
+ul#searchResult[view="show"] {
+    height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
   </style>
 <body status="naologado"> 
     <header>
@@ -596,7 +604,16 @@ label {
       const productFound=ProductsFilter(searched)  
      
       productFound.length > 0 ? render(productFound) :  searchResult.innerHTML="Produto não encontrado"
-      searched.length=='' ? searchResult.innerHTML="" : ProductsFilter(searched)  
+
+      if( searched.length=='' ){
+        searchResult.innerHTML=""
+        searchResult.setAttribute("view","hide")
+    body.setAttribute("status", "logado")
+
+        
+      }else{
+       ProductsFilter(searched)  
+      }
     }
 
     ProductsFilter=(searched)=>{
@@ -615,7 +632,7 @@ label {
     function render(productFound){   
       body.style.cssText="overflow: hidden";
       serchInput.style.cssText+="display:block;"
-      searchResult.style.cssText+="height: 340px; overflow: hidden;overflow-y: auto;"
+      searchResult.setAttribute("view","show")
       productFound.map((pr)=>{  
             searchResult.innerHTML+=`
                    <div class="product" id=`+pr.id+` onclick="toggle('`+pr.id+`')" view="false">   
@@ -697,7 +714,7 @@ Products = (userName,userEnd) => {
     
 
   console.log(welcome)
-    welcome.innerHTML+="<div><p style='  margin: 0px auto 5px;  font-size: 15px;  color: #8C9099;  padding: 0 5px; white-space: nowrap;  display: block;   margin-left: auto;  margin-right: auto; line-height: 1.2;'> Olá, <strong style='font-weight: 700;color: #4BE8A0; letter-spacing: 1px;'>"+userName+"</strong> faça seu pedido.</p><p style='font-size: 12px;margin: 0 5px; line-height: 1.2; white-space: nowrap;'> <i class='fa-solid fa-location-dot' style=' margin: 0 4px 0 0;'></i>"+userEnd+"</p><div>" 
+    welcome.innerHTML+="<div><p style='  margin: 0px auto 5px;  font-size: 15px;  color: #8C9099;  padding: 0 5px; display: block;   margin-left: auto;  margin-right: auto; line-height: 1.2;'> Olá, <strong style='font-weight: 700;color: #4BE8A0; letter-spacing: 1px;'>"+userName+"</strong> faça seu pedido.</p><p style='font-size: 12px;margin: 0 5px; line-height: 1.2; white-space: nowrap;'> <i class='fa-solid fa-location-dot' style=' margin: 0 4px 0 0;'></i>"+userEnd+"</p><div>" 
     
  
     body.setAttribute("status", "logado")
