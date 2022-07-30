@@ -36,7 +36,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'5',
-  name:'Refri 1L',
+  name:'Refrigerante',
   description:'',
   price:5.00,
   img:'sem-foto.png',
@@ -50,21 +50,21 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'7',
-  name:'Long bad',
+  name:'Budweiser cerveja Long Neck',
   description:'',
   price:7.50,
   img:'sem-foto.png',
   quantidade: 0,
 },{ 
   id:'8',
-  name:'Stella',
+  name:'Stella cerveja Long Neck',
   description:'',
   price:8.00,
   img:'sem-foto.png',
   quantidade: 0,
 },{ 
   id:'9',
-  name:'Corona Long Neck',
+  name:'Corona cerveja Long Neck',
   description:'',
   price:9.50,
   img:'sem-foto.png',
@@ -99,7 +99,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'14',
-  name:'Refri Lata',
+  name:'Refrigerante Guaraná 1L',
   description:'',
   price:10.00,
   img:'sem-foto.png',
@@ -134,7 +134,7 @@ const listProd = [
   quantidade: 0,
 },{ 
   id:'19',
-  name:'Vinho Drafrit',
+  name:'Vinho Draft',
   description:'',
   price:17.00,
   img:'sem-foto.png',
@@ -197,7 +197,7 @@ const listProd = [
       quantidade: 0,
     },{ 
       id:'28',
-      name:'Guaraná 1L',
+      name:'Guaraná Lata',
       description:'',
       price:5.00,
       img:'salsicha.png',
@@ -280,7 +280,7 @@ const listProd = [
       img:'sem-foto.png',
       quantidade: 0,
     },{ 
-      id:'40',
+      id:'4',
       name:'Império unidade',
       description:'',
       price:4.50,

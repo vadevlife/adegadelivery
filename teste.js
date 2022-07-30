@@ -8,14 +8,14 @@
         id:'0',
         name:'Brahma',
         description:'',
-        price:4.00,
+        price:4.50,
         img:'produtos/brahma.png',
         quantidade: 0,
       },{ 
         id:'1',
         name:'Itaipava',
         description:'',
-        price:3.5,
+        price:4.0,
         img:'produtos/itaipava.png',
         quantidade: 0,
       },{ 
@@ -27,7 +27,7 @@
         quantidade: 0,
       },{ 
         id:'3',
-        name:'Heineken',
+        name:'Heineken lata',
         description:'',
         price:6.50,
         img:'produtos/heineken.png',
@@ -48,21 +48,21 @@
         quantidade: 0,
       },{ 
         id:'7',
-        name:'Long Budweiser',
+        name:'Budweiser cerveja Long Neck',
         description:'',
         price:7.50,
         img:'produtos/long_bud.png',
         quantidade: 0,
       },{ 
-        id:'8',
-        name:'Stella',
+        id:'8', 
+        name:'Stella cerveja Long Neck', 
         description:'',
         price:8.50,
         img:'produtos/long_stella.png',
         quantidade: 0,
       },{ 
-        id:'9',
-        name:'Corona',
+        id:'9', 
+        name:'Corona cerveja Long Neck', 
         description:'',
         price:9.50,
         img:'produtos/long_corona.png',
@@ -83,7 +83,7 @@
         quantidade: 0,
       },{ 
         id:'4',
-        name:'Império unidade',
+        name:'Império unidade ',
         description:'',
         price:4.50,
         img:'produtos/imperio.png',
@@ -104,9 +104,9 @@
         quantidade: 0,
       },{ 
         id:'29',
-        name:'Itaipava Malzbier',
+        name:'Itaipava Malzbier Long Neck',
         description:'',
-        price:6.50,
+        price:8.00,
         img:'produtos/itaipava_malzbier.png',
         quantidade: 0,
       },{ 
@@ -118,7 +118,7 @@
         quantidade: 0,
       },{ 
         id:'21',
-        name:'Budweiser Lata',
+        name:'Budwaiser Cerveja Lata', 
         description:'',
         price:5.00,
         img:'produtos/budweiser_lata.png',
@@ -133,14 +133,14 @@
         id:'25',
         name:'Black Label',
         description:'',  
-        price:140.00,
+        price:180.00,
         img:'produtos/blacklabel.png',
         quantidade: 0,
       },{ 
         id:'20',
-        name:'Red',
+        name:'Red Label 1L', 
         description:'',
-        price:100.00,
+        price:109.00,
         img:'produtos/redlabel.png',
         quantidade: 0,
       },{ 
@@ -186,7 +186,7 @@
         img:'produtos/mastergold.png',
         quantidade: 0,
       },{ 
-        id:'59',
+        id:'46',
         name:'Jack Daniels Whisky',
         description:'',
         price:120.00,
@@ -225,6 +225,13 @@
       description:'',
       price:38.00,
       img:'produtos/fardo_Brahma.png',
+      quantidade: 0,
+    },{ 
+      id:'41',
+      name:'Fardo Império',
+      description:'',
+      price:37.00,
+      img:'sem-foto.png',
       quantidade: 0,
     },{ 
       id:'33',
@@ -278,12 +285,12 @@
       id:'12',
       name:'Vinho Santome',
       description:'',
-      price:22.00,
+      price:19.00, 
       img:'produtos/vinho_santome.png',
       quantidade: 0,
     },{ 
       id:'15',
-      name:'Vinho',
+      name:'Vinho Cantinho do Vale ', 
       description:'',
       price:8.00, 
       img:'produtos/sem-foto.png', 
@@ -292,9 +299,8 @@
       id:'19',
       name:'Vinho Draft',
       description:'',
-      price:14.00,  
-      img:'produtos/sem-foto.png',
-
+      price:17.00, 
+      img:'produtos/sem-foto.png',  
       quantidade: 0,
     }
   ]
@@ -320,7 +326,7 @@
       id:'51',
       name:'Gin Rose',
       description:'',
-      price:28.00,
+      price:37.00, 
       img:'produtos/sem-foto.png',
       quantidade: 0,
     }
@@ -429,7 +435,7 @@
       id:'10',
       name:'Red Bull',
       description:'',
-      price:12.00,
+      price:12.50, 
       img:'produtos/redbull.png',
       quantidade: 0,
     },{ 
@@ -447,21 +453,21 @@
   "itens":[
     { 
       id:'14',
-      name:'Refri Lata',
+      name:'Refrigerante lata',
       description:'',
       price:5.00,
       img:'produtos/coca_lata.png',
       quantidade: 0,
     },{ 
       id:'13',
-      name:'Coca',
+      name:'Coca 2L',
       description:'',
       price:12.00,
       img:'produtos/coca_2l.png',
       quantidade: 0,
     },{ 
       id:'5',
-      name:'Guaraná 1L',
+      name:'Refrigerante Guaraná 1L',
       description:'',
       price:10.00,
       img:'produtos/guarana1l.png',
@@ -508,14 +514,14 @@
       quantidade: 0,
     },{ 
       id:'63',
-      name:'Fofura',
+      name:'Fofura Salgadinho',
       description:'',
       price:4.00,
       img:'produtos/fofura.png',
       quantidade: 0,
     },{ 
       id:'64',
-      name:'Torcida',
+      name:'Torcida Salgadinho',
       description:'',
       price:3.00,
       img:'produtos/torcida.png',
